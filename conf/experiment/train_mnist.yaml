@@ -1,0 +1,23 @@
+# @package _global_
+
+# Config to train a local metric locally
+defaults:
+  - train_base
+  - override /datamodule: mnist
+  - override /model: mnist
+  - override /model/net: mlp
+  - override /metric: val_acc
+
+name: 'local_mnist'
+
+epochs: 100
+
+datamodule:
+  batch_size: 64
+  drop_last: false
+
+model:
+  learning_rate: 2e-4
+  net:
+    hidden_size: 128
+    p_dropout: 0.1

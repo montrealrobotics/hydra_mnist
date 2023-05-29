@@ -1,0 +1,28 @@
+# @package _global_
+
+defaults:
+  - sweep_base
+  - override /datamodule: mnist
+  - override /model: mnist
+  - override /model/net: mlp
+  - override /metric: val_acc
+
+# name of the run determines folder name in logs
+name: "sweep_mnist"
+
+epochs: 100
+
+datamodule:
+  drop_last: false
+
+# Sweeper tweaks
+hydra:
+  sweeper:
+    params:  # Parameters to sweep over
+      # Datamodule
+      datamodule.batch_size: choice(256, 512)
+      # Model learning rate
+      model.learning_rate: tag(log, interval(1e-4, 1e-3))
+      # Model params
+      model.net.hidden_size: choice(64, 128, 256)
+      model.net.p_dropout: choice(0.0, 0.1, 0.2)

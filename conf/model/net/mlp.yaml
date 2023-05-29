@@ -1,0 +1,3 @@
+_target_: src.models.model.MNISTModel
+hidden_size: 64       # Hidden size of the MLP
+p_dropout: 0.1        # Dropout probability

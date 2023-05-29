@@ -1,0 +1,5 @@
+defaults:
+  - net: mlp                    # Pick your favorite model here
+
+_target_: src.models.model.LitMNIST
+learning_rate: 2e-4             # Learning rate of the optimizer

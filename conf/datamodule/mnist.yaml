@@ -1,0 +1,5 @@
+_target_: src.datamodule.dataset.MNISTDataModule
+
+data_dir: ${data_dir}          # Directory where data will be downloaded
+batch_size: ???           # Batch size
+num_workers: 8            # Number of workers
